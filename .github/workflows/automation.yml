@@ -3,7 +3,17 @@ name: ec2 automation
 on: [push]
 
 jobs:
-    steps:
-        - name: start ec2 instance
-          run: |
-            aws ec2 start-instances --instance-ids i-0a26903e45cc116c9
+    ec2-automation:
+        runs-on: ubuntu-latest
+        steps:
+            - name: start ec2 instance
+              run: |
+                aws ec2 start-instances --instance-ids i-0a26903e45cc116c9
+
+            - name: ssh into instances
+              run: |
+                ssh -i ${{ secrets.SSH_KEY }} vijal_dsouza_exam@ec2-100-24-210-82.compute-1.amazonaws.com
+            
+            - name: runnning shell
+              run: |
+                echo "workflow successfull"
