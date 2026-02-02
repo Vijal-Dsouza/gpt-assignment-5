@@ -22,7 +22,8 @@ jobs:
 
             - name: ssh into instances
               run: |
-                ssh -i ${{ secrets.SSH_KEY }} vijal_dsouza_exam@ec2-100-24-210-82.compute-1.amazonaws.com
+                echo "${{ secrets.SSH_KEY }}" > key.pem
+                ssh -i key.pem vijal_dsouza_exam@ec2-100-24-210-82.compute-1.amazonaws.com
             
             - name: runnning shell
               run: |
