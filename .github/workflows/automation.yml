@@ -1,0 +1,9 @@
+name: ec2 automation
+
+on: [push]
+
+jobs:
+    steps:
+        - name: start ec2 instance
+          run: |
+            aws ec2 start-instances --instance-ids i-0a26903e45cc116c9
